@@ -1,0 +1,238 @@
+@import "mixins";
+@import "variables";
+
+.container {
+  .header {
+    background: #000;
+    color: $text-primary;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .logo {
+      // display: block !important;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      li {
+        padding: 0 10px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .call-out {
+    background: url("../public/images/reed-naliboff-SLoU1SVnMi8-unsplash.jpg");
+    background-size: cover;
+    width: 100%;
+    // padding: 20em;
+
+    .content-center {
+      display: block;
+      // padding: 20em;
+
+      h1 {
+        font-size: 4em;
+        font-style: italic;
+        color: $text-primary;
+        text-shadow: 1px 1px 0 #000;
+        margin: 0;
+      }
+      p {
+        font-size: 1.6em;
+        color: $text-primary;
+        text-shadow: 1px 1px 0 #000;
+      }
+    }
+  }
+  .cards {
+    background: $text-primary;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include card;
+
+    section {
+      padding: 0 20rem;
+    }
+  }
+
+  .description {
+    background: url("../public/images/sasha-matic-_oGmRFpWbwo-unsplash.jpg")
+      center;
+    background-size: cover;
+    p {
+      font-size: 1.5rem;
+      color: $text-primary;
+    }
+  }
+
+  footer {
+    padding: 1em 0;
+    background: #000;
+    text-align: center;
+    color: white;
+
+    p {
+      font-style: italic;
+      margin: 0.5em 0;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      li {
+        display: inline;
+        text-transform: capitalize;
+        padding: 0 0.5em;
+      }
+    }
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  /* Styles */
+  .container {
+    .header {
+      padding: 1rem 0;
+      justify-content: space-evenly;
+
+      ul {
+        padding: 0;
+      }
+    }
+
+    .call-out {
+      padding: 0;
+
+      .content-center {
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 0;
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    .cards {
+      .card {
+        flex: 0 1 calc(100%);
+      }
+    }
+
+    .description {
+      padding: 1em;
+      text-align: justify;
+      p {
+        font-size: 1em;
+      }
+    }
+
+    footer {
+      ul {
+        padding: 0;
+        li {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Styles */
+  .container {
+    .header {
+      padding: 1rem 2rem;
+    }
+    .call-out {
+      .content-center {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.75);
+
+        h1 {
+          font-size: 3rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .cards {
+      padding: 1rem;
+      .card {
+        flex: 0 1 calc(50% - 1em);
+      }
+    }
+    .description {
+      padding: 2rem;
+
+      .description-body {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1225px) {
+  /* Styles */
+  .container {
+    .header {
+      padding: 2rem 5rem;
+    }
+    .call-out {
+      padding: 10rem;
+      .content-center {
+        padding: 3rem;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+      }
+    }
+    .cards {
+      padding: 5rem;
+
+      .card {
+        flex: 0 1 calc(25% - 1rem);
+      }
+    }
+    .description {
+      padding: 5rem;
+      font-size: 2em;
+      letter-spacing: 0.05em;
+
+      .description-body {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  /* Styles */
+  .container {
+    .call-out {
+      padding: 20rem;
+      .content-center {
+        padding: 5rem;
+        background: rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+}
