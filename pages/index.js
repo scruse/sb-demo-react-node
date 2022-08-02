@@ -137,13 +137,15 @@ export async function getServerSideProps() {
     "cards",
   ];
 
-  const params = (array) => [...new Set(arrToUse)];
+  const params = [...new Set(arrToUse)];
+  const filteredArr = {
+    resourceArr: params
+  }
 
   const res = await fetch(`http://localhost:3003/solo-brands`, {
     method: "POST",
-    body: JSON.stringify({
-      params,
-    }),
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(filteredArr),
   });
 
   const data = await res.json();

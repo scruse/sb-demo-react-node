@@ -1,24 +1,29 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
+const cors = require("cors");
+
 const app = express();
-const cors = require('cors');
 const port = process.env.PORT || 3003;
+const jsonParser = bodyParser.json();
 
 app.use(cors());
 
 // POST
 // returns data from AWS page-data endpoint
-app.post("/solo-brands", async (req, res) => {
+app.post("/solo-brands", jsonParser, async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   console.log(process.env.API_KEY);
+  console.log(req.body);
+
   try {
     const { apiRoute } = req.params;
     const apiResponse = await fetch(
       "https://mvclo8gyq3.execute-api.us-east-2.amazonaws.com/latest/page-data",
       {
         method: "POST",
-        body: req.body,
+        body: JSON.stringify(req.body),
         headers: {
           "Content-Type": "application/json",
           Authorization: "Basic " + process.env.API_KEY,
