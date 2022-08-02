@@ -86,7 +86,11 @@ export default function Home({ data }) {
           <p>{footer}</p>
           <ul>
             {footerLinks.map((item, index) => {
-              return <li key={index}>{item}</li>;
+              return (
+                <li key={index}>
+                  <Link href="#">{item}</Link>
+                </li>
+              );
             })}
           </ul>
         </footer>
@@ -139,12 +143,12 @@ export async function getServerSideProps() {
 
   const params = [...new Set(arrToUse)];
   const filteredArr = {
-    resourceArr: params
-  }
+    resourceArr: params,
+  };
 
   const res = await fetch(`http://localhost:3003/solo-brands`, {
     method: "POST",
-    headers: {'Content-Type': 'application/json'},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(filteredArr),
   });
 
